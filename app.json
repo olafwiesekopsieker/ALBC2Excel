@@ -1,0 +1,26 @@
+{
+  "id": "edd294aa-2d3b-4fad-b3d5-df0eab325b92",
+  "name": "ALBC2XL",
+  "publisher": "OW Solutions",
+  "version": "1.0.0.0",
+  "brief": "Create Excel-Files from Templates in Media-Fields and fill with data",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 72000,
+      "to": 72005
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://ALBC2XL.com/help/",
+  "showMyCode": true,
+  "runtime": "6.0"
+}
