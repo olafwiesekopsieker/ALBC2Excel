@@ -36,12 +36,17 @@ controladdin BC2XL
    /// createXLSX.
    /// </summary>
    /// <param name="s">text.</param>
-   /// <param name="d">JsonObject.</param>
-   /// <param name="filename">text.</param>
-   
-    procedure createXLSX(s: text; d: JsonObject; filename: text);
+   procedure readXLSX(s: text);
 
+    /// <summary>
+    /// createXLSX.
+    /// </summary>
+    /// <param name="d">JsonObject.</param>
+    /// <param name="filename">text.</param>
+    procedure createXLSX(d: JsonObject; filename: text);
+    
     // The event declarations specify what callbacks could be raised from JavaScript by using the webclient API:
     // Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('CallBack', [42, 'some text', 5.8, 'c'])
-    event Callback(s: text);
+    
+    event GetWorksheetAsJson(d: JsonObject);
 }

@@ -60,7 +60,7 @@ codeunit 72000 "BC2XL Management"
     /// <param name="Filename">text.</param>
     procedure createXLSX(Filename: text)
     begin
-        Addin.createXLSX(base64Content, jsonData, Filename);
+        Addin.createXLSX(jsonData, Filename);
     end;
 
 }

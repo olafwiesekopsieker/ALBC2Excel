@@ -18,9 +18,10 @@ page 72000 PageWithAddIn
                 ApplicationArea = All;
 
                  // The control add-in events can be handled by defining a trigger with a corresponding name.
-                trigger Callback(s: text)
+                trigger GetWorksheetAsJson(d: JsonObject)
                 begin
-                  // message('from JS: %1', s); 
+                   // message('from JS: %1', s); 
+                   message('data', d);
                 end;
             }
         }
@@ -81,7 +82,7 @@ page 72000 PageWithAddIn
                     end;
 
                     // The control add-in methods can be invoked via a reference to the usercontrol.
-                    CurrPage.AddInn.createXLSX(Base64Content, data, 'out.xlsx');
+                    CurrPage.AddInn.readXLSX(Base64Content);
                 end;
 
             }

@@ -1,6 +1,6 @@
 var workbook = new ExcelJS.Workbook();
 
-function createXLSX(s, d, filename){
+function readXLSX(s, d, filename){
         
     var b; 
     try
@@ -15,44 +15,54 @@ function createXLSX(s, d, filename){
     // console.log(byteArray);
   
     try {
-        var workbook = new ExcelJS.Workbook();
+       
         workbook.xlsx.load(b).then(function(workbook){
-            console.timeEnd();
-            var result = ''
-            workbook.worksheets.forEach(function (sheet) {
-              sheet.eachRow(function (row, rowNumber) {
-                result += row.values + ' | \n'
-              })
-            }) 
-            console.log(result);
+            // console.timeEnd();
+            // var result = ''
+            // workbook.worksheets.forEach(function (sheet) {
+            //   sheet.eachRow(function (row, rowNumber) {
+            //     result += row.values + ' | \n'
+            //   })
+            // }) 
+            // console.log(result);
+           //Convert worksheet to JSON-Object and back to BC
+           var jsonsheet;
+           var ws;
+           console.log(workbook);
+           ws=workbook.worksheets[0];
+           console.log(ws);
            
+           //jsonsheet = XLSX.utils.sheet_to_json(ws);
+           //console.log(jsonsheet);
+        //    Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('GetWorksheetAsJson', [ws]);
+
            // TODO Create Content
                       
            
-            // save as Blob
-            workbook.xlsx.writeBuffer().then(function(buffer) {
-                XlsxPopulate.fromDataAsync(buffer)
-                    .then(function (workbook) {
-                        console.log(workbook);
-                        // save file
-                        workbook.outputAsync()
-                        .then(function (blob) {
-                            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-                                // If IE, you must uses a different method.
-                                window.navigator.msSaveOrOpenBlob(blob, filename);
-                            } else {
-                                var url = window.URL.createObjectURL(blob);
-                                var a = document.createElement("a");
-                                document.body.appendChild(a);
-                                a.href = url;
-                                a.download = filename;
-                                a.click();
-                                window.URL.revokeObjectURL(url);
-                                document.body.removeChild(a);
-                            }
-                        });
-                    });
-            });    
+        //     // save as Blob
+        //     workbook.xlsx.writeBuffer().then(function(buffer) {
+        //         XlsxPopulate.fromDataAsync(buffer)
+        //             .then(function (workbook) {
+        //                 console.log(workbook);
+        //                 // save file
+        //                 workbook.outputAsync()
+        //                 .then(function (blob) {
+        //                     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        //                         // If IE, you must uses a different method.
+        //                         window.navigator.msSaveOrOpenBlob(blob, filename);
+        //                     } else {
+        //                         var url = window.URL.createObjectURL(blob);
+        //                         var a = document.createElement("a");
+        //                         document.body.appendChild(a);
+        //                         a.href = url;
+        //                         a.download = filename;
+        //                         a.click();
+        //                         window.URL.revokeObjectURL(url);
+        //                         document.body.removeChild(a);
+        //                     }
+        //                 });
+        //             });
+        //     });    
         });
 
     } catch(error) 
