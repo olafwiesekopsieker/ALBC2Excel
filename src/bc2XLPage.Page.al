@@ -21,7 +21,7 @@ page 72000 PageWithAddIn
                 trigger GetWorksheetAsJson(d: JsonObject)
                 begin
                    // message('from JS: %1', s); 
-                   message('data', d);
+                   
                 end;
             }
         }
@@ -105,6 +105,7 @@ page 72000 PageWithAddIn
                           refdocatt.GetTable(docatt);
                           bc2xlMgmt.setAddIn(currpage.AddInn);
                           bc2xlMgmt.getFileFromMediaField(refdocatt,docatt.fieldno("Document Reference ID"));
+                          bc2xlMgmt.readXLSX();
                           bc2xlMgmt.createXLSX('testout.xlxs');
                         END; 
                     end;
@@ -113,24 +114,6 @@ page 72000 PageWithAddIn
     }
 
 
-   Procedure GetToken(Key_L: Text; JsonObject_L: JsonObject): Text
-   var
-        JsonToken_L: JsonToken;
-        Value_L: Text;
-    begin
-        Clear(JsonToken_L);
-        Clear(Value_L);
-        JsonObject_L.GET(Key_L,JsonToken_L);
-        JsonToken_L.WriteTo(Value_L);
-        IF ((StrPOS(Value_L,'"') <>0 )) THEN begin
-            Value_L:=CopyStr(Value_L,2,strLEN(Value_L)-2);
-            exit(Value_L);
-        end;
-        IF Value_L='null' then 
-            Value_L:='';
-        IF Value_L='' then 
-            Value_L:='';
-        exit(Value_L);    
-    end;    
+   
 
 }

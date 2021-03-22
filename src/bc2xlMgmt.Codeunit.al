@@ -53,6 +53,18 @@ codeunit 72000 "BC2XL Management"
 
     end;
 
+    /// <summary>
+    /// readXLSX.
+    /// </summary>
+    procedure readXLSX()
+    var
+      c: codeunit "OAuth 2.0 Mgt.";
+      r: Record "OAuth 2.0 Setup";
+    begin
+        // c.RefreshAccessToken();
+        // r.
+       Addin.readXLSX(base64Content); 
+    end;
 
     /// <summary>
     /// create XLSX-File
@@ -60,7 +72,8 @@ codeunit 72000 "BC2XL Management"
     /// <param name="Filename">text.</param>
     procedure createXLSX(Filename: text)
     begin
-        Addin.createXLSX(jsonData, Filename);
+        Addin.createXLSX(Filename);
     end;
+
 
 }

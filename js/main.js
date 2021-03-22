@@ -34,44 +34,45 @@ function readXLSX(s, d, filename){
            
            //jsonsheet = XLSX.utils.sheet_to_json(ws);
            //console.log(jsonsheet);
-        //    Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('GetWorksheetAsJson', [ws]);
+           Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('GetWorksheetAsJson', [jsonsheet]);
 
            // TODO Create Content
-                      
-           
-        //     // save as Blob
-        //     workbook.xlsx.writeBuffer().then(function(buffer) {
-        //         XlsxPopulate.fromDataAsync(buffer)
-        //             .then(function (workbook) {
-        //                 console.log(workbook);
-        //                 // save file
-        //                 workbook.outputAsync()
-        //                 .then(function (blob) {
-        //                     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-        //                         // If IE, you must uses a different method.
-        //                         window.navigator.msSaveOrOpenBlob(blob, filename);
-        //                     } else {
-        //                         var url = window.URL.createObjectURL(blob);
-        //                         var a = document.createElement("a");
-        //                         document.body.appendChild(a);
-        //                         a.href = url;
-        //                         a.download = filename;
-        //                         a.click();
-        //                         window.URL.revokeObjectURL(url);
-        //                         document.body.removeChild(a);
-        //                     }
-        //                 });
-        //             });
-        //     });    
-        });
-
+        });              
     } catch(error) 
     {
         // Catch compilation errors (errors caused by the compilation of the template : misplaced tags)
         errorHandler(error);
     }
 
-    
+}
+
+function createXLSX(filename){
+       
+    // save as Blob
+    workbook.xlsx.writeBuffer().then(function(buffer) {
+        XlsxPopulate.fromDataAsync(buffer)
+            .then(function (workbook) {
+                console.log(workbook);
+                // save file
+                workbook.outputAsync()
+                .then(function (blob) {
+                    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                        // If IE, you must uses a different method.
+                        window.navigator.msSaveOrOpenBlob(blob, filename);
+                    } else {
+                        var url = window.URL.createObjectURL(blob);
+                        var a = document.createElement("a");
+                        document.body.appendChild(a);
+                        a.href = url;
+                        a.download = filename;
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                        document.body.removeChild(a);
+                    }
+                });
+            });
+    });    
+   
    
 
 
